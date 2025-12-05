@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Step Progress Bar</title>
+
+<style>
+  .bar-box {
+    width: 300px;
+    height: 10px;
+    background: #d3d3d3;
+    margin: 40px auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #4caf50;
+    transition: 0.4s;
+  }
+
+  button {
+    padding: 8px 20px;
+    margin: 10px;
+  }
+</style>
+
+</head>
+<body>
+<h1 style="text-align:center; color:#333; font-family:Arial;">Step Progress Bar</h1>
+<div class="bar-box">
+  <div class="bar-fill" id="bar"></div>
+</div>
+
+<div style="text-align:center;">
+  <button onclick="setStep(1)">Step 1</button>
+  <button onclick="setStep(2)">Step 2</button>
+  <button onclick="setStep(3)">Step 3</button>
+</div>
+
+<script>
+  function setStep(step) {
+    let percent = (step) *33.33 ; 
+    document.getElementById("bar").style.width = percent + "%";
+  }
+</script>
+
+</body>
+</html>
