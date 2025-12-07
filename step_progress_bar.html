@@ -1,50 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simple Step Progress Bar</title>
-
+<title>Step Progress Bar</title>
 <style>
+  body {
+    background:white;
+    font-family: Arial, sans-serif;
+  }
+  .main-box {
+    width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    border: 2px solid green;
+    text-align: center;
+  }
+  h1 {
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
   .bar-box {
     width: 300px;
-    height: 10px;
-    background: #d3d3d3;
-    margin: 40px auto;
-    border-radius: 5px;
+    height: 25px;
+    background: white;
+    margin: auto;
+    border-radius: 12px;
+    position: relative;
     overflow: hidden;
+    border: 3px solid green;
+    box-shadow: 0 0 10px rgba(76,175,80,0.4);
   }
-
   .bar-fill {
     height: 100%;
     width: 0%;
-    background: #4caf50;
-    transition: 0.4s;
+    background: linear-gradient(90deg, green, yellow);
+    transition: 0.5s ease;
   }
-
+  .bar-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+    color: black;
+  }
   button {
-    padding: 8px 20px;
-    margin: 10px;
+    padding: 8px 25px;
+    margin: 12px 8px;
+    border: none;
+    border-radius: 6px;
+    background: green;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: lightgreen;
+    transform: scale(1.05);
+  }
+  button:active {
+    transform: scale(0.95);
   }
 </style>
-
 </head>
 <body>
-<h1 style="text-align:center; color:#333; font-family:Arial;">Step Progress Bar</h1>
-<div class="bar-box">
-  <div class="bar-fill" id="bar"></div>
+<div class="main-box">
+  <h1>Step Progress Bar</h1>
+  <div class="bar-box">
+    <div class="bar-fill" id="bar"></div>
+    <div class="bar-text" id="bar-text">0%</div>
+  </div>
+  <div style="margin-top:20px;">
+    <button onclick="setStep(1)">Step 1</button>
+    <button onclick="setStep(2)">Step 2</button>
+    <button onclick="setStep(3)">Step 3</button>
+  </div>
 </div>
-
-<div style="text-align:center;">
-  <button onclick="setStep(1)">Step 1</button>
-  <button onclick="setStep(2)">Step 2</button>
-  <button onclick="setStep(3)">Step 3</button>
-</div>
-
 <script>
   function setStep(step) {
-    let percent = (step) *33.33 ; 
+    let percent = step * 33.33;
     document.getElementById("bar").style.width = percent + "%";
+    document.getElementById("bar-text").innerText = Math.round(percent) + "%";
   }
 </script>
-
 </body>
 </html>
